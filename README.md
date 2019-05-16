@@ -6,20 +6,20 @@
 ![preview.png](https://github.com/a1ive/grub2-filemanager/raw/gh-pages/preview.png)
 
 ## 功能 
-|                         类型                         | Legacy | UEFI |
-| :--------------------------------------------------: | :----: | :--: |
-|        ![](/images/iso.png?raw=true)WinPE ISO        |   ☑    |  ☐   |
-|       ![](/images/linux.png?raw=true)Linux ISO       |   ☑    |  ☑   |
-|     ![](/images/android.png?raw=true)Android ISO     |   ☑    |  ☑   |
-|         ![](/images/bsd.png?raw=true)BSD ISO         |   ☑    |  ☒   |
-|        ![](/images/img.png?raw=true)磁盘镜像         |   ☑    |  ☐   |
-|     ![](/images/nt6.png?raw=true)NT6+ WinPE WIM      |   ☑    |  ☑   |
-|  ![](/images/nt6.png?raw=true)NT6+ Windows VHD/VHDX  |   ☑    |  ☐   |
-|        ![](/images/nt5.png?raw=true)NT5 WinPE        |   ☑    |  ☒   |
-| ![](/images/kernel.png?raw=true)Linux/Multiboot 内核 |   ☑    |  ☑   |
-|        ![](/images/efi.png?raw=true)EFI 应用         |   ☒    |  ☑   |
-|        ![](/images/lua.png?raw=true)Lua 脚本         |   ☑    |  ☑   |
-|       ![](/images/py.png?raw=true)Python 脚本        |   ☑    |  ☑   |
+| 类型                                                 | Legacy | UEFI |
+| :--------------------------------------------------- | :----: | :--: |
+| ![](/images/iso.png?raw=true)WinPE ISO               |   ✔️    |  🔲   |
+| ![](/images/linux.png?raw=true)Linux ISO             |   ✔️    |  ✔️   |
+| ![](/images/android.png?raw=true)Android ISO         |   ✔️    |  ✔️   |
+| ![](/images/bsd.png?raw=true)BSD ISO                 |   ✔️    |  ❌   |
+| ![](/images/img.png?raw=true)磁盘镜像                |   ✔️    |  🔲   |
+| ![](/images/nt6.png?raw=true)NT6+ WinPE WIM          |   ✔️    |  ✔️   |
+| ![](/images/nt6.png?raw=true)NT6+ Windows VHD/VHDX   |   ✔️    |  🔲   |
+| ![](/images/nt5.png?raw=true)NT5 WinPE               |   ✔️    |  ❌   |
+| ![](/images/kernel.png?raw=true)Linux/Multiboot 内核 |   ✔️    |  ✔️   |
+| ![](/images/efi.png?raw=true)EFI 应用                |   ❌    |  ✔️   |
+| ![](/images/lua.png?raw=true)Lua 脚本                |   ✔️    |  ✔️   |
+| ![](/images/py.png?raw=true)Python 脚本              |   ✔️    |  ✔️   |
 
 ## 下载 
 [Releases](https://github.com/a1ive/grub2-filemanager/releases) 
