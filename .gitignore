@@ -1,10 +1,9 @@
+grub
 grubfm*.efi
+grubfm*.efi.signed
 grubfm*.iso
+grubfm*.7z
 build
-sources/grub*
-bin/
-legacy/
-*.der
-*.pem
-*.rsa
-grub/
+*.crt
+*.cer
+*.key

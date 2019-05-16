@@ -6,12 +6,20 @@
 ![preview.png](https://github.com/a1ive/grub2-filemanager/raw/gh-pages/preview.png)
 
 ## 功能 
-1. 启动 efi,iso,img,Linux kernel,Multiboot kernel 文件
-2. 挂载 iso,img,tar,gz,xz 查看内容 
-3. 查看文本文件内容, 支持 GBK/UTF-8 编码 
-4. 浏览 jpg,png,tga 图片 
-5. 加载 GRUB 2,Syslinux 菜单 
-6. 执行 Lua 脚本 
+|                         类型                         | Legacy | UEFI |
+| :--------------------------------------------------: | :----: | :--: |
+|        ![](/images/iso.png?raw=true)WinPE ISO        |   ☑    |  ☐   |
+|       ![](/images/linux.png?raw=true)Linux ISO       |   ☑    |  ☑   |
+|     ![](/images/android.png?raw=true)Android ISO     |   ☑    |  ☑   |
+|         ![](/images/bsd.png?raw=true)BSD ISO         |   ☑    |  ☒   |
+|        ![](/images/img.png?raw=true)磁盘镜像         |   ☑    |  ☐   |
+|     ![](/images/nt6.png?raw=true)NT6+ WinPE WIM      |   ☑    |  ☑   |
+|  ![](/images/nt6.png?raw=true)NT6+ Windows VHD/VHDX  |   ☑    |  ☐   |
+|        ![](/images/nt5.png?raw=true)NT5 WinPE        |   ☑    |  ☒   |
+| ![](/images/kernel.png?raw=true)Linux/Multiboot 内核 |   ☑    |  ☑   |
+|        ![](/images/efi.png?raw=true)EFI 应用         |   ☒    |  ☑   |
+|        ![](/images/lua.png?raw=true)Lua 脚本         |   ☑    |  ☑   |
+|       ![](/images/py.png?raw=true)Python 脚本        |   ☑    |  ☑   |
 
 ## 下载 
 [Releases](https://github.com/a1ive/grub2-filemanager/releases) 
@@ -19,11 +27,8 @@
 ## 构建 
 ### Linux 
 ```shell
-git clone https://github.com/a1ive/grub2-filemanager.git
+git clone --recursive https://github.com/a1ive/grub2-filemanager.git
 cd grub2-filemanager
-wget -O legacy/ntboot/NTBOOT.MOD/NTBOOT.NT6 https://github.com/a1ive/grub2-filemanager/raw/binfiles/NTBOOT.NT6
-wget -O legacy/ntboot/NTBOOT.MOD/NTBOOT.PE1 https://github.com/a1ive/grub2-filemanager/raw/binfiles/NTBOOT.PE1
-wget -O legacy/wimboot https://github.com/a1ive/grub2-filemanager/raw/binfiles/wimboot
 ./build.sh
 ```
 
@@ -56,11 +61,11 @@ efi /grubfm.efi
 ## 支持的发行版列表 
 *    4MLinux
 *    Acronis True Image
-*    Android-x86(6.0+)
+*    Android-x86 (6.0+)
 *    antiX
 *    Apricity OS
 *    Antergos
-*    Arch Linux(FAT32 only)
+*    Arch Linux (FAT32 only)
 *    ArchBang
 *    Archboot
 *    Backbox
@@ -68,13 +73,12 @@ efi /grubfm.efi
 *    Bodhi
 *    Calculate Linux
 *    CDlinux
-*    CentOS(FAT32 only)
+*    CentOS (FAT32 only)
 *    Clonezilla
 *    CyanogenMod (LineageOS)
-*    DBAN(Legacy-BIOS only)
+*    DBAN (Legacy-BIOS only)
 *    Debian Live
 *    Debian/kFreeBSD
-*    Deepin
 *    Devuan Live
 *    elementaryOS
 *    Elive
