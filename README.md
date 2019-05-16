@@ -6,6 +6,7 @@
 ![preview.png](https://github.com/a1ive/grub2-filemanager/raw/gh-pages/preview.png)
 
 ## 功能 
+
 | 类型                                                 | Legacy | UEFI |
 | :--------------------------------------------------- | :----: | :--: |
 | ![](/images/iso.png?raw=true)WinPE ISO               |   ✔️    |  🔲   |
@@ -21,7 +22,9 @@
 | ![](/images/lua.png?raw=true)Lua 脚本                |   ✔️    |  ✔️   |
 | ![](/images/py.png?raw=true)Python 脚本              |   ✔️    |  ✔️   |
 
+
 ## 下载 
+
 [Releases](https://github.com/a1ive/grub2-filemanager/releases) 
 
 ## 构建 
