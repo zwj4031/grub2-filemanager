@@ -1,7 +1,7 @@
 # GRUB2 File Manager 
  ![](https://img.shields.io/github/license/a1ive/grub2-filemanager.svg?style=flat) ![](https://img.shields.io/github/downloads/a1ive/grub2-filemanager/total.svg?style=flat) ![](https://img.shields.io/github/release/a1ive/grub2-filemanager.svg?style=flat) 
 
-## 预览 
+## 预览
 
 ![preview.png](preview.png)
 
@@ -35,6 +35,7 @@ cd grub2-filemanager
 
 ## 启动 
 **不要使用 memdisk 加载 grubfm.iso !**  
+
 ### GRUB4DOS 
 ```
 map --mem /grubfm.iso (0xff)
@@ -50,7 +51,8 @@ else
   chainloader /grubfm.efi
 fi
 ```
-### rEFInd 
+### rEFInd
+
 ```
 loader /grubfm.efi
 ```
@@ -60,89 +62,15 @@ efi /grubfm.efi
 ```
 
 ## 支持的发行版列表 
-*    4MLinux
-*    Acronis True Image
-*    Android-x86 (6.0+)
-*    antiX
-*    Apricity OS
-*    Antergos
-*    Arch Linux (FAT32 only)
-*    ArchBang
-*    Archboot
-*    Backbox
-*    BlackArch
-*    Bodhi
-*    Calculate Linux
-*    CDlinux
-*    CentOS (FAT32 only)
-*    Clonezilla
-*    CyanogenMod (LineageOS)
-*    DBAN (Legacy-BIOS only)
-*    Debian Live
-*    Debian/kFreeBSD
-*    Devuan Live
-*    elementaryOS
-*    Elive
-*    ExTiX
-*    Fedora(FAT32 only)
-*    FreeBSD(bootonly ISO, Legacy-BIOS only)
-*    FreeDOS(Legacy-BIOS only)
-*    FreeNAS
-*    Gentoo
-*    GParted Live
-*    grml
-*    HelenOS(Legacy-BIOS only)
-*    IPFire
-*    Knoppix
-*    Kali Linux
-*    KaOS
-*    KDE-neon
-*    KolibriOS(Legacy-BIOS only)
-*    Linux Lite
-*    LinuxMint
-*    Lubuntu
-*    Manjaro
-*    Memtest86
-*    MiniTool Partition Wizard
-*    MX Linux
-*    NetBSD(Legacy-BIOS only)
-*    OpenBSD(Legacy-BIOS only)
-*    OpenSUSE
-*    OpenSUSE Tumbleweed
-*    OpenMandriva
-*    Parted Magic
-*    PCLinuxOS
-*    Peppermint
-*    pfSense
-*    PhoenixOS
-*    PIXEL
-*    Plop Linux Live
-*    Porteus
-*    Q4OS
-*    Redcore Linux
-*    RemixOS(3.0+)
-*    siduction
-*    Slackware
-*    Slax
-*    Slitaz(Legacy-BIOS only)
-*    SmartOS(Legacy-BIOS only)
-*    Solus
-*    Super Grub2 Disk
-*    System Rescue CD
-*    Tails
-*    Ubuntu
-*    Void Linux
-*    Wifislax/Wifislax64
-*    Wifiway
-*    Windows PE(Legacy-BIOS/x86_64-UEFI)
-*    Xubuntu
-*    ZorinOS
+- [链接](distro.md)
 
-## 源码 
+## 源码
+
 *	[GRUB2 File Manager](https://github.com/a1ive/grub2-filemanager)  
-*	[GRUB2 MOD](https://github.com/a1ive/grub2-mod) 
+*	[GRUB2](https://github.com/a1ive/grub) 
 
-## 相似项目 
+## 相似项目
+
 *	[Multiboot USB](http://mbusb.aguslr.com/) 
 *	[grub-iso-boot](https://github.com/Jimmy-Z/grub-iso-boot) 
 *	[grub-iso-multiboot](https://github.com/mpolitzer/grub-iso-multiboot) 

@@ -13,10 +13,6 @@ kramdown:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - NTBOOT.NT6
-  - NTBOOT.PE1
-  - wimboot
-  - oscdimg.exe
 
 # Theme settings
 show_downloads: false
