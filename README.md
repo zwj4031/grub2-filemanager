@@ -9,12 +9,12 @@
 
 | 类型                                       | i386-pc | i386-efi | x86_64-efi |
 | :----------------------------------------- | :-----: | :------: | :--------: |
-| ![](images/iso.png)WinPE ISO               |    ✔️    |    ❌     |     ✔️      |
+| ![](images/iso.png)WinPE ISO               |    ✔️    |    ✔️     |     ✔️      |
 | ![](images/linux.png)Linux ISO             |    ✔️    |    ✔️     |     ✔️      |
 | ![](images/android.png)Android ISO         |    ✔️    |    ✔️     |     ✔️      |
 | ![](images/bsd.png)BSD ISO                 |    ✔️    |    ❌     |     ❌      |
-| ![](images/img.png)IMG 磁盘镜像            |    ✔️    |    ❌     |     ✔️      |
-| ![](images/vhd.png)VHD 硬盘镜像            |    ✔️    |    ❌     |     ✔️      |
+| ![](images/img.png)IMG 磁盘镜像            |    ✔️    |    ✔️     |     ✔️      |
+| ![](images/vhd.png)VHD 硬盘镜像            |    ✔️    |    ✔️     |     ✔️      |
 | ![](images/nt6.png)WinPE WIM               |    ✔️    |    ✔️     |     ✔️      |
 | ![](images/nt5.png)NT5 WinPE               |    ✔️    |    ❌     |     ❌      |
 | ![](images/kernel.png)Linux/Multiboot 内核 |    ✔️    |    ✔️     |     ✔️      |
