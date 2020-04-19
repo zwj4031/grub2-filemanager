@@ -1,7 +1,7 @@
 # Site settings
 name: GRUB2 File Manager
 description: >
-  基于 GRUB 2 Lua 5.1 的文件管理器。
+  基于 GRUB 2 的文件管理器。
 repository: a1ive/grub2-filemanager
 avatar: https://github.com/a1ive/grub2-filemanager/raw/master/boot/grub/themes/slack/icons/dir.png
 
