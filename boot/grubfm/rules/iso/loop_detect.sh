@@ -60,6 +60,10 @@ function iso_detect {
     export src=win;
     return;
   fi;
+  if [ -z "${grubfm_startpebat}" -o ! -f "${grubfm_startpebat}" ];
+  then
+    set grubfm_startpebat="(install)/silent.bat";
+  fi;
   lua ${prefix}/rules/iso/winpe.lua;
   if [ ${wim_count} -ge 1 ];
   then
@@ -72,7 +76,7 @@ function iso_detect {
       lua ${prefix}/rules/iso/winpe.lua;
     }
   fi;
-  if [ -f (loop)/WIN51 -a "${grub_platform}" = "pc" ];
+  if [ -f (loop)/WIN51 -a "${grub_platform}" != "efi" ];
   then
     export linux_extra=" ";
     export icon=nt5;
@@ -90,7 +94,7 @@ function iso_detect {
   fi;
   if [ -d (loop)/arch ];
   then
-    if [ -f (loop)/boot/vmlinuz_* ];
+    if [ -f (loop)/boot/vmlinuz_x86_64 ];
     then
       export linux_extra="iso_loop_dev=/dev/disk/by-uuid/${rootuuid} iso_loop_path=${grubfm_path}";
     else
@@ -131,14 +135,6 @@ function iso_detect {
     export icon=kaos;
     export distro="KaOS";
     export src=kaos;
-    return;
-  fi;
-  if [ -d (loop)/manjaro ];
-  then
-    export linux_extra="img_dev=/dev/disk/by-uuid/${rootuuid} img_loop=${grubfm_path} misolabel=${looplabel}";
-    export icon=manjaro;
-    export distro="Manjaro";
-    export src=manjaro;
     return;
   fi;
   if [ -d (loop)/chakra ];
@@ -408,4 +404,8 @@ then
     loopback loop "${grubfm_file}";
     configfile ${prefix}/distro/${src}.sh;
   }
+  if [ "${src}" = "win" ];
+  then
+    source ${prefix}/rules/iso/buildpe.sh;
+  fi;
 fi;

@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Crowdin-Project: grub2-filemanager\n"
+"X-Crowdin-Project-ID: 310644\n"
 "X-Crowdin-Language: ru\n"
 "X-Crowdin-File: /master/lang/fm.pot\n"
+"X-Crowdin-File-ID: 16\n"
 "Project-Id-Version: grub2-filemanager\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-05-23 08:22\n"
+"PO-Revision-Date: 2020-12-31 01:39\n"
 
 msgid "Back"
 msgstr "Назад"
@@ -244,14 +246,125 @@ msgstr "Файл цельный."
 msgid "File is non-contiguous. (${frag} fragments)"
 msgstr "Файл фрагментирован. (${frag} фрагментов)"
 
+msgid "GRUB (G)"
+msgstr ""
+
+msgid "CPU (U)"
+msgstr ""
+
+msgid "RAM (R)"
+msgstr ""
+
+msgid "MAINBOARD (B)"
+msgstr ""
+
+msgid "SecureBoot"
+msgstr ""
+
+msgid "UEFI Version"
+msgstr ""
+
+msgid "Platform"
+msgstr ""
+
+msgid "Build date"
+msgstr ""
+
+msgid "Real Time Clock"
+msgstr ""
+
+msgid "RAM"
+msgstr ""
+
+msgid "Manufacturer"
+msgstr ""
+
+msgid "Socket Designation"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Current Speed"
+msgstr ""
+
+msgid "Max Speed"
+msgstr ""
+
+msgid "External Clock Frequency"
+msgstr ""
+
+msgid "Voltage"
+msgstr ""
+
+msgid "Hypervisor presents"
+msgstr ""
+
+msgid "Hypervisor signature"
+msgstr ""
+
+msgid "Supported features"
+msgstr ""
+
+msgid "Supported instructions"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "Configured voltage"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Product name"
+msgstr ""
+
+msgid "Board name"
+msgstr ""
+
+msgid "Board manufacturer"
+msgstr ""
+
+msgid "Board version"
+msgstr ""
+
+msgid "BIOS ROM size"
+msgstr ""
+
+msgid "BIOS manufacturer"
+msgstr ""
+
+msgid "BIOS version"
+msgstr ""
+
+msgid "BIOS release date"
+msgstr ""
+
+msgid "ACPI OEMID"
+msgstr ""
+
+msgid "ACPI RSDP version"
+msgstr ""
+
+msgid "SMBIOS version"
+msgstr ""
+
 msgid "Language"
 msgstr "Язык"
 
-msgid "Keyboard layouts"
+msgid "Resolution"
 msgstr ""
 
+msgid "Keyboard layouts"
+msgstr "Раскладка клавиатуры"
+
 msgid "Fix \"BlInitializeLibrary failed XXX\" error"
-msgstr ""
+msgstr "Исправте ошибку \"BlInitializeLibrary failed XXX\""
 
 msgid "Disable PatchGuard and DSE at boot time"
 msgstr "Отключить PatchGuard и DSE во время загрузки"
@@ -340,6 +453,9 @@ msgstr "Загрузить macOS из ${device} ${info}"
 msgid "Boot ${winver} on ${device} ${info}"
 msgstr "Загрузить ${winver} из ${device} ${info}"
 
+msgid "Boot Windows Recovery on ${device} ${info}"
+msgstr "Загрузить Windows Recovery на ${device} ${info}"
+
 msgid "Boot ${device} ${info}"
 msgstr "Загрузить ${device} ${info}"
 
@@ -415,14 +531,23 @@ msgstr "Выключить"
 msgid "Halt (H)"
 msgstr "Выключение (H)"
 
+msgid "Halt (don't use APM)"
+msgstr ""
+
+msgid "Warm Reboot (R)"
+msgstr ""
+
+msgid "Cold Reboot (S)"
+msgstr ""
+
 msgid "File: "
 msgstr "Файл: "
 
 msgid "Hotkeys"
 msgstr "Комбинация клавиш"
 
-msgid "F1 - Help"
-msgstr "F1 - Помощь"
+msgid "F1 - System Information"
+msgstr ""
 
 msgid "F2 - File Manager"
 msgstr "F2 - Просмотр файлов"
@@ -433,8 +558,8 @@ msgstr "F3 - Обнаружение ОС"
 msgid "F4 - Settings"
 msgstr "F4 - Настройки"
 
-msgid "F5 - PXE Boot Menu"
-msgstr "F5 - Загрузочное меню PXE"
+msgid "F5 - Multiboot Toolkits"
+msgstr ""
 
 msgid "F6 - Power Off"
 msgstr "F6 - Выключить"
@@ -476,14 +601,14 @@ msgid "License: GNU GPLv3"
 msgstr "Лицензия: GNU GPLv3"
 
 msgid "File not found"
-msgstr ""
+msgstr "Файл не найден"
 
 msgid "Please select the type of file you want to search:"
-msgstr ""
+msgstr "Выберите тип файла для поиска:"
 
 msgid "Install Windows XP - STEP 1"
-msgstr ""
+msgstr "Установить Windows XP - Шаг 1"
 
 msgid "Install Windows XP - STEP 2"
-msgstr ""
+msgstr "Установить Windows XP - Шаг 2"
 

@@ -22,16 +22,15 @@ then
   partnew --type=0x00 --file="${grubfm_file}" "${grubfm_disk}" 4;
   if [ "$grub_platform" = "efi" ];
   then
-    unmap_cd;
-    map "${grubfm_file}";
-  elif [ "$grub_platform" = "pc" ];
-  then
+    map -f "${grubfm_file}";
+  else
     to_g4d_path "${grubfm_file}";
     if [ -n "${g4d_path}" ];
     then
-      set g4d_cmd="find --set-root --ignore-floppies /fm.loop;/MAP nomem cd ${g4d_path};";
+      set g4d_cmd="map --mem (rd)+1 (fd0);map --hook;configfile (fd0)/menu.lst";
+      to_g4d_menu "set file=${g4d_path}\x0amap %file% (0xff)\x0amap --hook\x0achainloader (0xff)\x0aboot";
       linux ${prefix}/grub.exe --config-file=${g4d_cmd};
-      boot;
+      initrd (rd);
     fi;
   fi;
 else

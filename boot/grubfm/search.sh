@@ -1,5 +1,5 @@
 # Grub2-FileManager
-# Copyright (C) 2017,2020  A1ive.
+# Copyright (C) 2020  A1ive.
 #
 # Grub2-FileManager is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,51 +14,49 @@
 # You should have received a copy of the GNU General Public License
 # along with Grub2-FileManager.  If not, see <http://www.gnu.org/licenses/>.
 
-function search_list {
-  set ext="${1}";
-  unset found;
-  echo "Searching *.${ext} ...";
-  for file in ${srcdir}*.${ext} ${srcdir}*/*.${ext} ${srcdir}*/*/*.${ext};
-  do
-    if [ -f "${file}" ];
-    then
-      echo "${file}";
-    else
-      continue;
-    fi
-    set found="1";
-    menuentry "${file}" --class ${2} {
-      grubfm_open "${1}";
-    }
-  done;
-  if [ -z "${found}" ];
+function search_prepare {
+  if [ -f "${theme_std}" ];
   then
-    menuentry $"File not found" --class search {
-      configfile ${prefix}/search.sh;
-    }
+    export theme=${theme_std};
   fi;
-}
-
-function search_menu {
-  menuentry $"Please select the type of file you want to search:" --class search {
-    grubfm;
-  }
-  submenu "wim" --class wim {
-    search_list "wim" "wim";
-  }
-  submenu "iso" --class iso {
-    search_list "iso" "iso";
-  }
-  submenu "img" --class img {
-    search_list "img" "img";
-  }
-  submenu "vhd" --class img {
-    search_list "vhd" "img";
-  }
-  submenu "efi" --class exe {
-    search_list "efi" "exe";
+  menuentry $"Back" --class go-previous --hotkey esc {
+    grubfm "${grubfm_current_path}";
   }
 }
 
-search_menu;
-source $prefix/global.sh;
+function search_list {
+  set grubfm_search_ext=${1};
+  set grubfm_search_ico=${2};
+  lua ${prefix}/search.lua;
+}
+
+submenu "[I] *.iso" --class iso --hotkey "i" {
+  search_prepare;
+  search_list iso iso;
+}
+
+submenu "[W] *.wim" --class wim --hotkey "w" {
+  search_prepare;
+  search_list wim wim;
+}
+
+submenu "[V] *.vhd | *.vhdx" --class img --hotkey "v" {
+  search_prepare;
+  search_list vhd img;
+  search_list vhdx img;
+}
+
+if [ "$grub_platform" = "efi" ];
+then
+  submenu "[U] *.efi" --class exe --hotkey "u" {
+    search_prepare;
+    search_list efi uefi;
+  }
+fi;
+
+submenu "[M] *.img" --class img --hotkey "m" {
+  search_prepare;
+  search_list img img;
+}
+
+source ${prefix}/global.sh;

@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: grub2-filemanager\n"
+"X-Crowdin-Project-ID: 310644\n"
 "X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /master/lang/fm.pot\n"
+"X-Crowdin-File-ID: 16\n"
 "Project-Id-Version: grub2-filemanager\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-23 08:22\n"
+"PO-Revision-Date: 2020-12-31 11:44\n"
 
 msgid "Back"
 msgstr "Geri"
@@ -244,8 +246,119 @@ msgstr "Dosya bitişik."
 msgid "File is non-contiguous. (${frag} fragments)"
 msgstr "Dosya bitişik değil. (${frag} fragments)"
 
+msgid "GRUB (G)"
+msgstr "GRUB (G)"
+
+msgid "CPU (U)"
+msgstr "CPU (U)"
+
+msgid "RAM (R)"
+msgstr "RAM (R)"
+
+msgid "MAINBOARD (B)"
+msgstr "ANAKART (B)"
+
+msgid "SecureBoot"
+msgstr "Güvenli Önyükleme"
+
+msgid "UEFI Version"
+msgstr "UEFI Versiyon"
+
+msgid "Platform"
+msgstr "Platform"
+
+msgid "Build date"
+msgstr "Yapım tarihi"
+
+msgid "Real Time Clock"
+msgstr "Gerçek Zaman Saati"
+
+msgid "RAM"
+msgstr "RAM"
+
+msgid "Manufacturer"
+msgstr "Üretici"
+
+msgid "Socket Designation"
+msgstr "Soket Tahsisi"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Current Speed"
+msgstr "Geçerli Hız"
+
+msgid "Max Speed"
+msgstr "Maksimum Hız"
+
+msgid "External Clock Frequency"
+msgstr "Arttırılmış Hız Frekansı"
+
+msgid "Voltage"
+msgstr "Voltaj"
+
+msgid "Hypervisor presents"
+msgstr "Hypervisor desteği"
+
+msgid "Hypervisor signature"
+msgstr "Hypervisor  imzası"
+
+msgid "Supported features"
+msgstr "Desteklenen özellikler"
+
+msgid "Supported instructions"
+msgstr "Desteklenen bilgiler"
+
+msgid "Size"
+msgstr "Boyut"
+
+msgid "Speed"
+msgstr "Hız"
+
+msgid "Configured voltage"
+msgstr "Yapılandırılmış voltaj"
+
+msgid "Version"
+msgstr "Versiyon"
+
+msgid "Product name"
+msgstr "Ürün adı"
+
+msgid "Board name"
+msgstr "Anakart adı"
+
+msgid "Board manufacturer"
+msgstr "Anakart üreticisi"
+
+msgid "Board version"
+msgstr "Anakart versiyon"
+
+msgid "BIOS ROM size"
+msgstr "BIOS ROM boyutu"
+
+msgid "BIOS manufacturer"
+msgstr "BIOS üreticisi"
+
+msgid "BIOS version"
+msgstr "BIOS versiyon"
+
+msgid "BIOS release date"
+msgstr "BIOS yayın tarihi"
+
+msgid "ACPI OEMID"
+msgstr "ACPI OEMID"
+
+msgid "ACPI RSDP version"
+msgstr "ACPI RSDP versiyon"
+
+msgid "SMBIOS version"
+msgstr "SMBIOS versiyon"
+
 msgid "Language"
 msgstr "Dil"
+
+msgid "Resolution"
+msgstr "Çözünürlük"
 
 msgid "Keyboard layouts"
 msgstr "Klavye Düzeni"
@@ -338,7 +451,10 @@ msgid "Boot macOS on ${device} ${info}"
 msgstr "${device} ${info} üzerinden MacOS yükle"
 
 msgid "Boot ${winver} on ${device} ${info}"
-msgstr "${device} ${info} üzerinde ${winver} dosyasını önyükleyin"
+msgstr "${device} ${info} üzerinden ${winver} dosyasını önyükleyin"
+
+msgid "Boot Windows Recovery on ${device} ${info}"
+msgstr "${device} ${info} üzerinden Windows Kurtarmayı açın"
 
 msgid "Boot ${device} ${info}"
 msgstr "Önyükle ${device} ${info}"
@@ -415,14 +531,23 @@ msgstr "Kapat"
 msgid "Halt (H)"
 msgstr "Kapat (H)"
 
+msgid "Halt (don't use APM)"
+msgstr "Kapat (APM ile kullanmayın)"
+
+msgid "Warm Reboot (R)"
+msgstr "Yeniden Başlat (Sıcak)"
+
+msgid "Cold Reboot (S)"
+msgstr "Yeniden Başlat (Soğuk)"
+
 msgid "File: "
 msgstr "Dosya: "
 
 msgid "Hotkeys"
 msgstr "Kısayol tuşları"
 
-msgid "F1 - Help"
-msgstr "F1 - Yardım"
+msgid "F1 - System Information"
+msgstr "F1 - Sistem Bilgisi"
 
 msgid "F2 - File Manager"
 msgstr "F2 - Dosya Yöneticisi"
@@ -433,8 +558,8 @@ msgstr "F3 - İşletim Sistemini Algıla"
 msgid "F4 - Settings"
 msgstr "F4 - Ayarlar"
 
-msgid "F5 - PXE Boot Menu"
-msgstr "F5 - PXE Önyükleme Menüsü"
+msgid "F5 - Multiboot Toolkits"
+msgstr "F5 - Çoklu Önyükleme Araçları"
 
 msgid "F6 - Power Off"
 msgstr "F6 - Kapat"

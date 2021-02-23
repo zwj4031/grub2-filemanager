@@ -15,14 +15,14 @@ else
     echo "not found\nPlease install xorriso."
     exit
 fi
-echo -n "checking for grub ... "
-if [ -e "$(which grub-mkimage)" ]
-then
-    echo "ok"
-else
-    echo "not found\nPlease install grub."
-    exit
-fi
+#echo -n "checking for grub ... "
+#if [ -e "$(which grub-mkimage)" ]
+#then
+#    echo "ok"
+#else
+#    echo "not found\nPlease install grub."
+#    exit
+#fi
 echo -n "checking for mtools ... "
 if [ -e "$(which mtools)" ]
 then
@@ -62,6 +62,10 @@ echo "10. Polish"
 echo "11. Ukrainian"
 echo "12. French"
 echo "13. Danish"
+echo "14. Portuguese (Brazil)"
+echo "15. Arabic"
+echo "16. Korean"
+echo "17. Hungarian"
 read -p "Please make a choice: " choice
 case "$choice" in
     2)
@@ -111,6 +115,22 @@ case "$choice" in
         echo "da_DK"
         cp lang/da_DK/lang.sh build/boot/grubfm/
         ;;
+    14)
+        echo "pt_BR"
+        cp lang/pt_BR/lang.sh build/boot/grubfm/
+        ;;
+    15)
+        echo "ar_SA"
+        cp lang/ar_SA/lang.sh build/boot/grubfm/
+        ;;
+    16)
+        echo "ko_KR"
+        cp lang/ko_KR/lang.sh build/boot/grubfm/
+        ;;
+    17)
+        echo "hu_HU"
+        cp lang/hu_HU/lang.sh build/boot/grubfm/
+        ;;
     *)
         echo "zh_CN"
         cp lang/zh_CN/lang.sh build/boot/grubfm/
@@ -125,15 +145,16 @@ do
     cp grub/x86_64-efi/${modules}.mod build/boot/grubfm/x86_64-efi/
 done
 # cp arch/x64/*.efi build/boot/grubfm
-cp arch/x64/*.gz build/boot/grubfm
+cp arch/x64/*.xz build/boot/grubfm
 cd build
-find ./boot | cpio -o -H newc > ./memdisk.cpio
+find ./boot | cpio -o -H newc | xz -9 -e > ./memdisk.xz
 cd ..
 rm -r build/boot/grubfm/x86_64-efi
 # rm build/boot/grubfm/*.efi
-rm build/boot/grubfm/*.gz
+rm build/boot/grubfm/*.xz
 modules=$(cat arch/x64/builtin.lst)
-grub-mkimage -m ./build/memdisk.cpio -d ./grub/x86_64-efi -p "(memdisk)/boot/grubfm" -c arch/x64/config.cfg -o grubfmx64.efi -O x86_64-efi $modules
+./grub/grub-mkimage -m ./build/memdisk.xz -d ./grub/x86_64-efi -p "(memdisk)/boot/grubfm" -c arch/x64/config.cfg -o grubfmx64.efi -O x86_64-efi $modules
+rm build/memdisk.xz
 
 echo "i386-efi"
 mkdir build/boot/grubfm/i386-efi
@@ -143,19 +164,59 @@ do
     cp grub/i386-efi/${modules}.mod build/boot/grubfm/i386-efi/
 done
 # cp arch/ia32/*.efi build/boot/grubfm
-cp arch/ia32/*.gz build/boot/grubfm
+cp arch/ia32/*.xz build/boot/grubfm
 cd build
-find ./boot | cpio -o -H newc > ./memdisk.cpio
+find ./boot | cpio -o -H newc | xz -9 -e > ./memdisk.xz
 cd ..
 rm -r build/boot/grubfm/i386-efi
 # rm build/boot/grubfm/*.efi
-rm build/boot/grubfm/*.gz
+rm build/boot/grubfm/*.xz
 modules=$(cat arch/ia32/builtin.lst)
-grub-mkimage -m ./build/memdisk.cpio -d ./grub/i386-efi -p "(memdisk)/boot/grubfm" -c arch/ia32/config.cfg -o grubfmia32.efi -O i386-efi $modules
-rm build/memdisk.cpio
+./grub/grub-mkimage -m ./build/memdisk.xz -d ./grub/i386-efi -p "(memdisk)/boot/grubfm" -c arch/ia32/config.cfg -o grubfmia32.efi -O i386-efi $modules
+rm build/memdisk.xz
+
+echo "arm64-efi"
+mkdir build/boot/grubfm/arm64-efi
+for modules in $(cat arch/aa64/optional.lst)
+do
+    echo "copying ${modules}.mod"
+    cp grub/arm64-efi/${modules}.mod build/boot/grubfm/arm64-efi/
+done
+# cp arch/aa64/*.efi build/boot/grubfm
+cp arch/aa64/*.xz build/boot/grubfm
+cd build
+find ./boot | cpio -o -H newc | xz -9 -e > ./memdisk.xz
+cd ..
+rm -r build/boot/grubfm/arm64-efi
+# rm build/boot/grubfm/*.efi
+rm build/boot/grubfm/*.xz
+modules=$(cat arch/aa64/builtin.lst)
+./grub/grub-mkimage -m ./build/memdisk.xz -d ./grub/arm64-efi -p "(memdisk)/boot/grubfm" -c arch/aa64/config.cfg -o grubfmaa64.efi -O arm64-efi $modules
+rm build/memdisk.xz
+
+echo "i386-multiboot"
+mkdir build/boot/grubfm/i386-multiboot
+for modules in $(cat arch/multiboot/optional.lst)
+do
+    echo "copying ${modules}.mod"
+    cp grub/i386-multiboot/${modules}.mod build/boot/grubfm/i386-multiboot/
+done
+cp arch/multiboot/*.xz build/boot/grubfm/
+cp arch/multiboot/memdisk build/boot/grubfm/
+cp arch/multiboot/grub.exe build/boot/grubfm/
+cd build
+find ./boot | cpio -o -H newc | xz -9 -e > ./memdisk.xz
+cd ..
+rm -r build/boot/grubfm/i386-multiboot
+rm build/boot/grubfm/*.xz
+rm build/boot/grubfm/memdisk
+rm build/boot/grubfm/grub.exe
+modules=$(cat arch/multiboot/builtin.lst)
+./grub/grub-mkimage -m ./build/memdisk.xz -d ./grub/i386-multiboot -p "(memdisk)/boot/grubfm" -c arch/multiboot/config.cfg -o grubfm.elf -O i386-multiboot $modules
+rm build/memdisk.xz
 
 echo "i386-pc"
-builtin=$(cat arch/legacy/builtin.lst) 
+builtin=$(cat arch/legacy/builtin.lst)
 mkdir build/boot/grubfm/i386-pc
 modlist="$(cat arch/legacy/insmod.lst) $(cat arch/legacy/optional.lst)"
 for modules in $modlist
@@ -164,22 +225,29 @@ do
     cp grub/i386-pc/${modules}.mod build/boot/grubfm/i386-pc/
 done
 cp arch/legacy/insmod.lst build/boot/grubfm/
-cp arch/legacy/grub.exe build/boot/grubfm/
-cp arch/legacy/duet64.iso build/boot/grubfm/
-cp arch/legacy/memdisk build/boot/grubfm/
-cp arch/legacy/*.gz build/boot/grubfm/
+cp arch/multiboot/*.xz build/boot/grubfm/
+cp arch/multiboot/memdisk build/boot/grubfm/
+cp arch/multiboot/grub.exe build/boot/grubfm/
 cd build
-find ./boot | cpio -o -H newc | gzip -9 > ./fm.loop
+find ./boot | cpio -o -H newc | xz -9 -e > ./fm.loop
 cd ..
 rm -r build/boot
-grub-mkimage -d ./grub/i386-pc -p "(memdisk)/boot/grubfm" -c arch/legacy/config.cfg -o ./build/core.img -O i386-pc $builtin
+./grub/grub-mkimage -d ./grub/i386-pc -p "(memdisk)/boot/grubfm" -c arch/legacy/config.cfg -o ./build/core.img -O i386-pc $builtin
 cat grub/i386-pc/cdboot.img build/core.img > build/fmldr
 rm build/core.img
-cp arch/legacy/MAP build/
-cp -r arch/legacy/ntboot/* build/
 touch build/ventoy.dat
+xorriso -as mkisofs -l -R -hide-joliet boot.catalog -b fmldr -no-emul-boot -allow-lowercase -boot-load-size 4 -boot-info-table -o grubfm_pc.iso build
+rm build/fmldr
+rm build/fm.loop
 
-xorriso -as mkisofs -R -hide-joliet boot.catalog -b fmldr -no-emul-boot -allow-lowercase -boot-load-size 4 -boot-info-table -o grubfm.iso build
+echo "i386-pc preloader"
+builtin=$(cat arch/legacy/preloader.lst)
+./grub/grub-mkimage -d ./grub/i386-pc -p "(cd)/boot/grub" -c arch/legacy/preloader.cfg -o ./build/core.img -O i386-pc $builtin
+cat grub/i386-pc/cdboot.img build/core.img > build/fmldr
+rm build/core.img
+cp grubfm.elf build/
+touch build/ventoy.dat
+xorriso -as mkisofs -l -R -hide-joliet boot.catalog -b fmldr -no-emul-boot -allow-lowercase -boot-load-size 4 -boot-info-table -o grubfm.iso build
 
 dd if=/dev/zero of=build/efi.img bs=1M count=16
 mkfs.vfat build/efi.img
@@ -187,6 +255,6 @@ mmd -i build/efi.img ::EFI
 mmd -i build/efi.img ::EFI/BOOT
 mcopy -i build/efi.img grubfmx64.efi ::EFI/BOOT/BOOTX64.EFI
 mcopy -i build/efi.img grubfmia32.efi ::EFI/BOOT/BOOTIA32.EFI
-xorriso -as mkisofs -R -hide-joliet boot.catalog -b fmldr -no-emul-boot -allow-lowercase -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e efi.img -no-emul-boot -o grubfm_multiarch.iso build
+xorriso -as mkisofs -l -R -hide-joliet boot.catalog -b fmldr -no-emul-boot -allow-lowercase -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e efi.img -no-emul-boot -o grubfm_multiarch.iso build
 
 rm -r build

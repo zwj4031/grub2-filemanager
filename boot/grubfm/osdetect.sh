@@ -98,13 +98,7 @@ do
         chainloader -t (${root})/efi/microsoft/boot/bootmgfw.efi;
       }
     fi;
-    if [ "${grub_cpu}" = "x86_64" ];
-    then
-      set boot_file="/efi/boot/bootx64.efi";
-    elif [ "${grub_cpu}" = "i386" ];
-    then
-      set boot_file="/efi/boot/bootia32.efi";
-    fi;
+    set boot_file="/efi/boot/boot${EFI_ARCH}.efi";
     if [ -f "(${device})${boot_file}" ];
     then
       menuentry $"Boot ${device} ${info}" "${device}" "${boot_file}" --class uefi {
@@ -127,14 +121,13 @@ do
         set root="${2}";
         set lang=en_US;
         terminal_output console;
-        loopback wimboot ${prefix}/wimboot.gz;
-        ntboot --gui --win --efi=(wimboot)/bootmgfw.efi "(${root})";
+        loopback wimboot ${prefix}/wimboot.xz;
+        ntboot --win --efi=(wimboot)/bootmgfw.efi "(${root})";
       }
       unset sysver;
       unset winver;
     fi;
-  elif [ "$grub_platform" = "pc" ];
-  then
+  else
     probe --set=bootable -b ${device};
     if regexp 'bootable' "${bootable}";
     then
@@ -158,22 +151,39 @@ do
     if ntversion "(${device})" sysver;
     then
       to_win_ver "${sysver}";
-      menuentry $"Boot ${winver} on ${device} ${info}" "${device}" "${sysver}" --class nt6 {
-        regexp --set=1:tmp --set=2:num '(hd[0-9]+,)[a-zA-Z]*([0-9]+)' "${2}";
-        expr --set=num "${num} - 1";
-        set g4d_dev="(${tmp}${num})";
-        if regexp '^5\.' "${3}";
-        then
-          set nt="NT5";
-        else
-          set nt="NT6";
-        fi;
-        set g4d_cmd="find --set-root --ignore-floppies /fm.loop;/NTBOOT ${nt}=${g4d_dev};";
-        linux ${prefix}/grub.exe --config-file=${g4d_cmd};
-      }
+      if regexp '^5\.' "${sysver}";
+      then
+        echo "Skip NT ${sysver}";
+      else
+        menuentry $"Boot ${winver} on ${device} ${info}" "${device}" --class nt6 {
+          set root="${2}";
+          set lang=en_US;
+          terminal_output console;
+          loopback wimboot ${prefix}/wimboot.xz;
+          ntboot --win --efi=(wimboot)/bootmgfw.efi "(${root})";
+        }
+      fi;
       unset sysver;
       unset winver;
     fi;
+  fi;
+  if [ -f "(${device})/Recovery/WindowsRE/winre.wim" ];
+  then
+    menuentry $"Boot Windows Recovery on ${device} ${info}" "${device}" --class nt6 {
+        set lang=en_US;
+        terminal_output console;
+        loopback wimboot ${prefix}/wimboot.xz;
+        ntboot --efi=(wimboot)/bootmgfw.efi "(${2})/Recovery/WindowsRE/winre.wim";
+    }
+  fi;
+  if [ -f "(${device})/Recovery/winre.wim" ];
+  then
+    menuentry $"Boot Windows Recovery on ${device} ${info}" "${device}" --class nt6 {
+        set lang=en_US;
+        terminal_output console;
+        loopback wimboot ${prefix}/wimboot.xz;
+        ntboot --efi=(wimboot)/bootmgfw.efi "(${2})/Recovery/winre.wim";
+    }
   fi;
 done;
 

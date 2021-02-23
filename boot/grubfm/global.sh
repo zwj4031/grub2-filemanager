@@ -19,15 +19,11 @@ then
   export theme=${theme_fm};
 fi;
 
-hiddenentry "---- HOTKEY MENU ----" {
-  echo;
+hiddenentry " " --hotkey f1 {
+  configfile ${prefix}/hwinfo.sh;
 }
 
-hiddenentry "[F1] HELP" --hotkey f1 {
-  configfile ${prefix}/help.sh;
-}
-
-hiddenentry "[F2] FILE MANAGER" --hotkey f2 {
+hiddenentry " " --hotkey f2 {
   if [ -n "${grubfm_current_path}" ];
   then
     grubfm "${grubfm_current_path}";
@@ -36,29 +32,30 @@ hiddenentry "[F2] FILE MANAGER" --hotkey f2 {
   fi;
 }
 
-hiddenentry "[F3] OS DETECT" --hotkey f3 {
+hiddenentry " " --hotkey f3 {
   configfile ${prefix}/osdetect.sh;
 }
 
-hiddenentry "[F4] SETTINGS" --hotkey f4 {
+hiddenentry " " --hotkey f4 {
   configfile ${prefix}/settings.sh;
 }
 
-hiddenentry "[F5] PXE BOOT MENU" --hotkey f5 {
-  configfile ${prefix}/netboot.sh;
+hiddenentry " " --hotkey f5 {
+  configfile ${prefix}/util.sh;
 }
 
-hiddenentry "[F6] POWER OFF" --hotkey f6 {
+hiddenentry " " --hotkey f6 {
   configfile ${prefix}/power.sh;
 }
 
-hiddenentry " " --hotkey f {
-  if [ -n "${grubfm_current_path}" ];
-  then
-    export srcdir=$grubfm_current_path;
-    configfile $prefix/search.sh;
-  else
-    export srcdir=(*);
-    configfile $prefix/search.sh;
-  fi;
-}
+if [ -n "${grubfm_current_path}" ];
+then
+  hiddenentry " " --hotkey 0x02000066 {
+    if [ -f "(${user})/boot/grubfm/search.sh" ];
+    then
+      configfile (${user})/boot/grubfm/search.sh;
+    else
+      configfile $prefix/search.sh;
+    fi;
+  }
+fi;
